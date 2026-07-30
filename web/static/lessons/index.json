@@ -1,0 +1,509 @@
+[
+  {
+    "id": "lesson-001",
+    "title": "Bài 1: Quan sát vườn, chọn vấn đề",
+    "description": "Quan sát thiên nhiên xung quanh như một người làm khoa học, phân biệt 'điều em thấy' với 'điều em đoán', và chọn 1 vấn đề thực tế của khu vườn để giải quyết suốt khóa học.",
+    "difficulty": "beginner",
+    "estimatedMinutes": 60,
+    "category": "Khu vườn thông minh",
+    "order": 1,
+    "objectives": [
+      "Phân biệt điều quan sát thấy thật (lá vàng, đất khô) và điều suy đoán (do thiếu nước)",
+      "Đặt được 1 câu hỏi kiểm tra được (Ví dụ: Có phải cây góc này héo vì đất khô nhanh hơn không?)",
+      "Chọn 1 vấn đề khu vườn chính để giải quyết từ Bài 1 đến Bài 7"
+    ],
+    "steps": [
+      {
+        "title": "Bước 1: Xem video mở đầu",
+        "instruction": "Mở video 1.1 xem các khu vườn thực tế đang gặp vấn đề và lý do vì sao người làm kỹ thuật giỏi luôn quan sát thật kỹ trước khi bắt tay cắm dây.",
+        "blockTip": "Ghi chép nhanh vào Sổ tay Maker."
+      },
+      {
+        "title": "Bước 2: Ra quan sát thật",
+        "instruction": "Cầm sổ ra vườn hoặc ban công, chọn 2-3 cây. Ghi lại: Sự kiện (chuyện gì xảy ra), Bối cảnh (ở đâu, lúc nào), Tần suất (thường xuyên hay thỉnh thoảng).",
+        "blockTip": "Chụp ảnh lại các góc cây nếu có điện thoại."
+      },
+      {
+        "title": "Bước 3: Tách 'thấy' và 'đoán'",
+        "instruction": "Gạch chân câu là điều nhìn thấy thật ('lá bị vàng'), khoanh tròn câu là suy đoán ('chắc do nắng gắt').",
+        "blockTip": "Người làm khoa học luôn biết mình đang thấy hay đang đoán."
+      },
+      {
+        "title": "Bước 4: Đặt câu hỏi kiểm tra được & Chọn vấn đề",
+        "instruction": "Biến quan sát thành câu hỏi có thể thử nghiệm, chọn 1 vấn đề em thấy thú vị nhất để theo đuổi suốt khóa học.",
+        "blockTip": "Ghi to vấn đề vào Sổ tay Maker."
+      }
+    ],
+    "solution": {
+      "summary": "Kết quả Bài 1 là trang Sổ tay Maker hoàn chỉnh ghi nhận quan sát, câu hỏi kiểm tra và vấn đề khu vườn được chọn.",
+      "blocks": [
+        "SỔ TAY MAKER - BÀI 1:",
+        "1. Quan sát thấy: Lá cây ở góc ban công bị héo vàng vào buổi trưa.",
+        "2. Suy đoán: Đất bị mất nước quá nhanh do nắng chiếu trực tiếp.",
+        "3. Câu hỏi kiểm tra: Đất ở chậu góc ban công có khô nhanh hơn các chậu khác không?",
+        "4. Vấn đề chọn giải quyết: Tự động phát hiện đất khô và tưới nước kịp thời."
+      ]
+    },
+    "requiredExtensions": [],
+    "allowedBlocks": [],
+    "device": "thingBot_esp32C3",
+    "resources": [
+      {
+        "type": "pdf",
+        "title": "Giáo trình Khu Vườn Thông Minh - Bài 1",
+        "url": "/giaotrinh.pdf",
+        "description": "Tài liệu hướng dẫn tự học 7 bài Dế Base KIT"
+      }
+    ],
+    "video": null,
+    "pdf": "/giaotrinh.pdf",
+    "unlockRequirements": {
+      "lessonsCompleted": []
+    },
+    "requiresEditor": false
+  },
+  {
+    "id": "lesson-002",
+    "title": "Bài 2: Mô phỏng tái chế",
+    "description": "Thử nghiệm ý tưởng bằng đồ tái chế (chai nhựa, bìa carton) trước khi cắm mạch, và thực hiện thí nghiệm công bằng so sánh khả năng giữ nước của các loại đất.",
+    "difficulty": "beginner",
+    "estimatedMinutes": 90,
+    "category": "Khu vườn thông minh",
+    "order": 2,
+    "objectives": [
+      "Cắt chai nhựa và bìa carton làm chậu cây và mô hình khung vườn mini",
+      "Thiết kế thí nghiệm công bằng (chỉ đổi MỘT biến số là loại đất)",
+      "So sánh khả năng giữ nước của đất thường, đất trộn xơ dừa, đất trộn sỏi"
+    ],
+    "steps": [
+      {
+        "title": "Bước 1: Cắt chai làm chậu",
+        "instruction": "Cắt ngang chai nhựa 1.5L giữ lại phần đáy cao khoảng 1 gang tay. Khoét 3 lỗ thoát nước bên dưới và dán băng keo viền mép cắt.",
+        "blockTip": "Nhờ người lớn hỗ trợ khi dùng kéo/dao rọc giấy."
+      },
+      {
+        "title": "Bước 2: Dựng khung bìa carton",
+        "instruction": "Gấp bìa carton thành khung đứng đủ chắc để đặt chậu vào giữa và gắn mái che nghiêng ở đỉnh.",
+        "blockTip": "Cần đứng vững và dễ tháo ra sửa."
+      },
+      {
+        "title": "Bước 3: Thí nghiệm 3 ly đất",
+        "instruction": "Chuẩn bị 3 ly nhựa: Ly A (đất thường), Ly B (đất + xơ dừa), Ly C (đất + sỏi). Đổ cùng 1 lượng nước vào cả 3 ly.",
+        "blockTip": "Quy tắc vàng: Chỉ đổi MỘT thứ (loại đất). Giữ nguyên lượng nước & cỡ ly."
+      },
+      {
+        "title": "Bước 4: Đánh giá & Rút kết luận",
+        "instruction": "Kiểm tra mặt đất sau 30 phút và sau 1 ngày. Ghi nhận cảm nhận (ướt, ẩm, khô) vào bảng trong Sổ tay Maker.",
+        "blockTip": "Đất xơ dừa thường giữ ẩm tốt hơn hẳn."
+      }
+    ],
+    "solution": {
+      "summary": "Mô hình vườn mini tái chế đứng vững và bảng theo dõi độ ẩm 3 loại đất.",
+      "blocks": [
+        "THÍ NGHIỆM ĐẤT GIỮ NƯỚC:",
+        "• Ly A (Đất thường): Sau 30p (Ẩm) -> Sau 1 ngày (Hơi khô)",
+        "• Ly B (Đất + Xơ dừa): Sau 30p (Ướt) -> Sau 1 ngày (Vẫn ẩm tốt) => CHỌN",
+        "• Ly C (Đất + Sỏi): Sau 30p (Hơi ẩm) -> Sau 1 ngày (Khô hoàn toàn)",
+        "-> KẾT LUẬN: Đất trộn xơ dừa giữ ẩm lâu nhất cho khu vườn."
+      ]
+    },
+    "requiredExtensions": [],
+    "allowedBlocks": [],
+    "device": "thingBot_esp32C3",
+    "resources": [
+      {
+        "type": "pdf",
+        "title": "Giáo trình Khu Vườn Thông Minh - Bài 2",
+        "url": "/giaotrinh.pdf",
+        "description": "Hướng dẫn thí nghiệm công bằng & làm mô hình tái chế"
+      }
+    ],
+    "video": null,
+    "pdf": "/giaotrinh.pdf",
+    "unlockRequirements": {
+      "lessonsCompleted": [
+        "lesson-001"
+      ]
+    },
+    "requiresEditor": false
+  },
+  {
+    "id": "lesson-003",
+    "title": "Bài 3: Mạch Thing + Độ ẩm đất",
+    "description": "Mạch điện vào cuộc! Cắm cảm biến độ ẩm đất vào cổng S1, còi buzzer vào S2, tự đo số khi đất khô/ẩm để chọn ngưỡng và viết chương trình báo động khi đất khô.",
+    "difficulty": "beginner",
+    "estimatedMinutes": 90,
+    "category": "Khu vườn thông minh",
+    "order": 3,
+    "objectives": [
+      "Cắm cảm biến độ ẩm đất (S1) và còi buzzer (S2) đúng 3 dây (Vàng-Tín hiệu, Đỏ-5V, Đen-GND)",
+      "Đo số độ ẩm ly đất khô và ly đất ẩm để chọn ngưỡng thích hợp",
+      "Viết chương trình dùng khối điều kiện NẾU: đất khô thì còi kêu báo động"
+    ],
+    "steps": [
+      {
+        "title": "Bước 1: Cắm cảm biến & Còi",
+        "instruction": "TẮT NGUỒN. Cắm cảm biến độ ẩm đất vào cổng S1. Cắm còi buzzer vào cổng S2. Giữ đúng thứ tự 3 dây (Vàng-Đỏ-Đen).",
+        "blockTip": "Luôn TẮT NGUỒN trước khi cắm hoặc đổi dây!"
+      },
+      {
+        "title": "Bước 2: Tìm ngưỡng của em",
+        "instruction": "Cắm đầu dò vào ly đất khô (đọc số 1), cắm vào ly đất ẩm (đọc số 2). Chọn ngưỡng ở khoảng giữa 2 số đó (Ví dụ: khô 300, ẩm 700 -> ngưỡng 500).",
+        "blockTip": "Lau sạch đầu dò giữa 2 lần đo."
+      },
+      {
+        "title": "Bước 3: Lập trình báo động",
+        "instruction": "Ghép các khối: Vòng lặp liên tục -> Đọc cảm biến S1 -> Nếu (Độ ẩm < Ngưỡng) thì Bật còi S2, Đợi 1s, Tắt còi S2.",
+        "blockTip": "Khi đất khô, còi sẽ kêu bíp từng tiếng báo hiệu."
+      }
+    ],
+    "solution": {
+      "summary": "Chương trình đọc cảm biến đất S1 liên tục và phát tiếng còi S2 cảnh báo khi đất khô.",
+      "blocks": [
+        "1. [Khi bấm chạy]",
+        "2. [Lặp lại mãi mãi]",
+        "   ├── [Đặt độ ẩm = Đọc cảm biến độ ẩm đất (S1)]",
+        "   ├── [Hiện (độ ẩm) lên màn hình]",
+        "   └── [Nếu (độ ẩm < 400) thì]",
+        "       ├── [Bật còi (S2)]",
+        "       ├── [Đợi 1 giây]",
+        "       └── [Tắt còi (S2)]",
+        "       [Nếu không]",
+        "       └── [Tắt còi (S2)]"
+      ],
+      "codeSnippet": "#include <Arduino.h>\n\nconst int SENS_PIN = A0; // S1\nconst int BUZZ_PIN = 2;  // S2\n\nvoid setup() {\n  pinMode(BUZZ_PIN, OUTPUT);\n  Serial.begin(115200);\n}\n\nvoid loop() {\n  int val = analogRead(SENS_PIN);\n  Serial.println(val);\n  if (val < 400) {\n    digitalWrite(BUZZ_PIN, HIGH);\n    delay(1000);\n    digitalWrite(BUZZ_PIN, LOW);\n  } else {\n    digitalWrite(BUZZ_PIN, LOW);\n  }\n  delay(200);\n}"
+    },
+    "requiredExtensions": [
+      "arduinoThingBotC3"
+    ],
+    "allowedBlocks": [
+      "thingBotC3_init",
+      "thingBotC3_setLed",
+      "thingBotC3_buzzer",
+      "control_forever",
+      "control_if",
+      "control_if_else",
+      "control_wait",
+      "math_number",
+      "operator_lt"
+    ],
+    "device": "thingBot_esp32C3",
+    "resources": [
+      {
+        "type": "pdf",
+        "title": "Giáo trình Khu Vườn Thông Minh - Bài 3",
+        "url": "/giaotrinh.pdf",
+        "description": "Sơ đồ nối dây & thuật toán máy báo đất khô"
+      }
+    ],
+    "video": null,
+    "pdf": "/giaotrinh.pdf",
+    "unlockRequirements": {
+      "lessonsCompleted": [
+        "lesson-002"
+      ]
+    },
+    "requiresEditor": true
+  },
+  {
+    "id": "lesson-004",
+    "title": "Bài 4: Cụm cảm biến môi trường",
+    "description": "Cho vườn thêm 4 giác quan: đo nhiệt độ & độ ẩm không khí (DHT11 S4), ánh sáng (S5), chất lượng không khí (S6), và mức nước siêu âm (S7). Hiển thị tất cả lên màn OLED 0.96 inch.",
+    "difficulty": "intermediate",
+    "estimatedMinutes": 90,
+    "category": "Khu vườn thông minh",
+    "order": 4,
+    "objectives": [
+      "Cắm từng cảm biến DHT11 (S4), Ánh sáng (S5), Không khí (S6), Siêu âm SRF04 (S7) và thử nghiệm",
+      "Hiểu cảm biến siêu âm đo KOẢNG CÁCH (nước càng đầy -> khoảng cách càng ngắn)",
+      "Lập trình trạm đo hiển thị 4 thông số rút gọn lên màn hình OLED"
+    ],
+    "steps": [
+      {
+        "title": "Bước 1: Cắm lần lượt cảm biến",
+        "instruction": "Tắt nguồn. Cắm DHT11 vào S4, Ánh sáng vào S5, Chất lượng không khí vào S6, Siêu âm SRF04 vào S7. Cắm con nào thử con đó trước khi cắm tiếp.",
+        "blockTip": "Cắm từng con MỘT để khi có lỗi biết ngay con nào sai."
+      },
+      {
+        "title": "Bước 2: Hiểu khoảng cách siêu âm",
+        "instruction": "Cảm biến siêu âm đặt ở miệng bồn chĩa xuống. Chai đầy nước -> khoảng cách NGẮN. Nước vơi -> khoảng cách DÀI.",
+        "blockTip": "Số càng lớn = nước càng ít!"
+      },
+      {
+        "title": "Bước 3: Hiển thị lên màn OLED",
+        "instruction": "Nối màn OLED 0.96 inch (chuẩn I2C 4 dây). Lập trình đọc cả 4 cảm biến, lưu vào biến và in lên màn OLED cứ mỗi 2 giây.",
+        "blockTip": "Viết ngắn gọn kiểu 'Nhiet: 28C', 'Am KK: 65%' để không bị tràn chữ."
+      }
+    ],
+    "solution": {
+      "summary": "Trạm đo môi trường mini đọc 4 cảm biến và cập nhật lên màn OLED 0.96 inch.",
+      "blocks": [
+        "1. [Khi bấm chạy]",
+        "2. [Khởi tạo Mạch Thing & Màn OLED]",
+        "3. [Lặp lại mãi mãi]",
+        "   ├── [Đặt Nhiệt độ = Đọc DHT11 Nhiệt độ (S4)]",
+        "   ├── [Đặt Độ ẩm KK = Đọc DHT11 Độ ẩm (S4)]",
+        "   ├── [Đặt Ánh sáng = Đọc cảm biến ánh sáng (S5)]",
+        "   ├── [Đặt Mức nước = Đọc siêu âm SRF04 (S7)]",
+        "   ├── [Xóa màn hình OLED]",
+        "   ├── [OLED in dòng 1: Nhiet: (Nhiệt độ) C]",
+        "   ├── [OLED in dòng 2: Am KK: (Độ ẩm KK) %]",
+        "   ├── [OLED in dòng 3: Anh sang: (Ánh sáng)]",
+        "   ├── [OLED in dòng 4: Muc nuoc: (Mức nước) cm]",
+        "   └── [Đợi 2 giây]"
+      ]
+    },
+    "requiredExtensions": [
+      "arduinoThingBotC3",
+      "dht",
+      "oled"
+    ],
+    "allowedBlocks": [
+      "thingBotC3_init",
+      "control_forever",
+      "control_wait",
+      "math_number",
+      "dht_*",
+      "oled_*"
+    ],
+    "device": "thingBot_esp32C3",
+    "resources": [
+      {
+        "type": "pdf",
+        "title": "Giáo trình Khu Vườn Thông Minh - Bài 4",
+        "url": "/giaotrinh.pdf",
+        "description": "Sơ đồ trạm đo môi trường & nguyên lý cảm biến siêu âm"
+      }
+    ],
+    "video": null,
+    "pdf": "/giaotrinh.pdf",
+    "unlockRequirements": {
+      "lessonsCompleted": [
+        "lesson-003"
+      ]
+    },
+    "requiresEditor": true
+  },
+  {
+    "id": "lesson-005",
+    "title": "Bài 5: Cụm đầu ra qua Relay",
+    "description": "Dạy vườn biết HÀNH ĐỘNG! Điều khiển an toàn các thiết bị công suất lớn (bơm 3-5V, quạt 5V, đèn LED 10W) qua Module Relay 5V (cổng S3) và tự động bật đèn khi trời tối.",
+    "difficulty": "intermediate",
+    "estimatedMinutes": 90,
+    "category": "Khu vườn thông minh",
+    "order": 5,
+    "objectives": [
+      "Hiểu vì sao tải lớn (bơm, quạt, đèn 10W) phải đi qua Relay công tắc điện tử",
+      "Thử relay 'rỗng' nghe tiếng 'tách' đóng ngắt mạch",
+      "Lập trình Bơm chạy 3 giây rồi ngắt",
+      "Lập trình Đèn 10W tự động bật qua Relay khi cảm biến ánh sáng báo trời tối (< 300)"
+    ],
+    "steps": [
+      {
+        "title": "Bước 1: Nối Relay S3 & Thử 'rỗng'",
+        "instruction": "Tắt nguồn. Nối điều khiển Relay vào cổng S3. Bật nguồn, chạy chương trình bật Relay 2s rồi tắt. Lắng nghe tiếng 'tách'.",
+        "blockTip": "Tiếng 'tách' báo hiệu rơ-le nhận lệnh điều khiển tốt."
+      },
+      {
+        "title": "Bước 2: Thử bơm nước qua Relay",
+        "instruction": "Nối bơm mini qua Relay, đặt ống dẫn nước vào ly. Lập trình: Bật Relay S3 -> Đợi 3 giây -> Tắt Relay S3.",
+        "blockTip": "Không để bơm chạy khô quá lâu."
+      },
+      {
+        "title": "Bước 3: Đèn tự bật khi trời tối",
+        "instruction": "Nối đèn 10W qua Relay (nhớ tản nhiệt & nguồn riêng). Đọc cảm biến ánh sáng S4: Nếu ánh sáng < 300 (trời tối) thì Bật Relay S3.",
+        "blockTip": "An toàn: Đèn 10W rất NÓNG & CHÓI, không chạm hay nhìn thẳng khi thử."
+      }
+    ],
+    "solution": {
+      "summary": "Chương trình kiểm tra cảm biến ánh sáng S4 và bật/tắt Relay S3 điều khiển đèn 10W.",
+      "blocks": [
+        "1. [Khi bấm chạy]",
+        "2. [Khởi tạo Mạch Thing]",
+        "3. [Lặp lại mãi mãi]",
+        "   ├── [Đặt Ánh sáng = Đọc cảm biến ánh sáng (S4)]",
+        "   └── [Nếu (Ánh sáng < 300) thì]",
+        "       ├── [Bật Relay (S3)]",
+        "       [Nếu không]",
+        "       └── [Tắt Relay (S3)]"
+      ]
+    },
+    "requiredExtensions": [
+      "arduinoThingBotC3"
+    ],
+    "allowedBlocks": [
+      "thingBotC3_init",
+      "thingBotC3_setLed",
+      "thingBotC3_buzzer",
+      "control_forever",
+      "control_if",
+      "control_if_else",
+      "control_wait",
+      "math_number",
+      "operator_lt"
+    ],
+    "device": "thingBot_esp32C3",
+    "resources": [
+      {
+        "type": "pdf",
+        "title": "Giáo trình Khu Vườn Thông Minh - Bài 5",
+        "url": "/giaotrinh.pdf",
+        "description": "Nguyên lý Relay & quy tắc an toàn tải điện lớn"
+      }
+    ],
+    "video": null,
+    "pdf": "/giaotrinh.pdf",
+    "unlockRequirements": {
+      "lessonsCompleted": [
+        "lesson-004"
+      ]
+    },
+    "requiresEditor": true
+  },
+  {
+    "id": "lesson-006",
+    "title": "Bài 6: Lắp tất cả vào khu vườn",
+    "description": "Bài thực hành lớn nhất! Mang tất cả cảm biến, relay, bơm, quạt, đèn gắn vào mô hình vườn tái chế và viết 1 vòng lặp chính duy nhất để vườn tự chăm sóc chính nó.",
+    "difficulty": "advanced",
+    "estimatedMinutes": 180,
+    "category": "Khu vườn thông minh",
+    "order": 6,
+    "objectives": [
+      "Bố trí mạch điện & Relay ở vị trí CAO & KHÔ, bồn nước ở THẤP",
+      "Lắp theo 4 lớp: Cơ khí -> Cảm biến -> Đầu ra Relay -> Bó dây & dán nhãn",
+      "Lập trình Vòng lặp chính 5 việc: Đọc cảm biến -> Tự tưới -> Tự bật quạt -> Tự bật đèn -> Báo hết nước"
+    ],
+    "steps": [
+      {
+        "title": "Bước 1: Nguyên tắc bố trí an toàn",
+        "instruction": "Mạch và Relay luôn đặt CAO và KHÔ. Nước ở THẤP có khay hứng. Đèn 10W đặt riêng có tản nhiệt.",
+        "blockTip": "Bó dây gọn gàng và dán nhãn tên cổng ở 2 đầu dây."
+      },
+      {
+        "title": "Bước 2: Lắp 4 lớp phần cứng",
+        "instruction": "Lớp 1 (Cơ khí) -> Lớp 2 (Gắn cảm biến độ ẩm S1, DHT11 S4, Ánh sáng S5, Siêu âm S7) -> Lớp 3 (Relay S3 nối bơm, quạt, đèn) -> Lớp 4 (Bó dây).",
+        "blockTip": "Lắp xong lớp nào chạy thử lớp đó ngay."
+      },
+      {
+        "title": "Bước 3: Lập trình Vòng lặp chính 5 việc",
+        "instruction": "Viết 1 vòng lặp mãi mãi làm 5 việc: 1. Đọc tất cả cảm biến -> 2. NẾU độ ẩm đất < ngưỡng THÌ bật bơm 3s -> 3. NẾU nhiệt độ > 32°C THÌ bật quạt -> 4. NẾU ánh sáng < 300 THÌ bật đèn -> 5. NẾU khoảng cách siêu âm > 20cm THÌ kêu còi báo cạn bồn.",
+        "blockTip": "Quan trọng: Thêm khoảng chờ sau khi tưới để đất kịp ngấm nước, tránh tưới liên tục làm úng cây!"
+      }
+    ],
+    "solution": {
+      "summary": "Chương trình tự động hóa khu vườn thông minh hoàn chỉnh làm 5 công việc tự động.",
+      "blocks": [
+        "VÒNG LẶP CHÍNH KHU VƯỜN THÔNG MINH:",
+        "1. [Đọc tất cả cảm biến (S1, S4, S5, S7)]",
+        "2. [TƯỚI NƯỚC]: Nếu (Độ ẩm đất < 400) -> [Bật Bơm Relay S3 3s] -> [Đợi 10s ngấm]",
+        "3. [LÀM MÁT]: Nếu (Nhiệt độ S4 > 32°C) -> [Bật Quạt Relay S3] Else [Tắt Quạt]",
+        "4. [CHIẾU SÁNG]: Nếu (Ánh sáng S5 < 300) -> [Bật Đèn Relay S3] Else [Tắt Đèn]",
+        "5. [CẢNH BÁO NƯỚC]: Nếu (Siêu âm S7 > 20cm) -> [Bật Còi S2 bíp 3 lần báo hết nước]"
+      ]
+    },
+    "requiredExtensions": [
+      "arduinoThingBotC3",
+      "dht",
+      "oled",
+      "ultrasonic"
+    ],
+    "allowedBlocks": [
+      "thingBotC3_*",
+      "control_*",
+      "operator_*",
+      "math_*",
+      "dht_*",
+      "oled_*"
+    ],
+    "device": "thingBot_esp32C3",
+    "resources": [
+      {
+        "type": "pdf",
+        "title": "Giáo trình Khu Vườn Thông Minh - Bài 6",
+        "url": "/giaotrinh.pdf",
+        "description": "Sơ đồ bố trí 4 lớp & thuật toán vòng lặp chính khu vườn"
+      }
+    ],
+    "video": null,
+    "pdf": "/giaotrinh.pdf",
+    "unlockRequirements": {
+      "lessonsCompleted": [
+        "lesson-005"
+      ]
+    },
+    "requiresEditor": true
+  },
+  {
+    "id": "lesson-007",
+    "title": "Bài 7: Dự án riêng & Trình bày",
+    "description": "Biến khu vườn thành sản phẩm độc bản! Sáng tạo chức năng riêng giải quyết đúng vấn đề ở Bài 1, thử nghiệm 2 lượt cải tiến, và trình bày bài Pitch 3 phút xuất sắc.",
+    "difficulty": "advanced",
+    "estimatedMinutes": 180,
+    "category": "Khu vườn thông minh",
+    "order": 7,
+    "objectives": [
+      "Phát triển 1 chức năng sáng tạo riêng (Cảnh báo còi khác nhau, tưới tiết kiệm, vỗ tay bật nước)",
+      "Test thử nghiệm ít nhất 2 lượt và ghi kết quả cải tiến vào Sổ tay Maker",
+      "Trình bày bài Pitch 3 phút gồm 5 phần (Vấn đề 30s -> Giải pháp 40s -> Demo 60s -> Dữ liệu 30s -> Hạn chế 20s)"
+    ],
+    "steps": [
+      {
+        "title": "Bước 1: Thiết kế chức năng riêng",
+        "instruction": "Đối chiếu với Bài 1: khu vườn Bài 6 đã giải quyết được gì, còn thiếu gì? Chọn 1 ý tưởng riêng (Ví dụ: 1 tiếng bíp = đất khô, 2 tiếng = hết nước; không tưới giữa trưa nắng gắt; vỗ tay 2 cái tưới ngay).",
+        "blockTip": "Ý tưởng nhỏ chạy tốt giá trị hơn ý tưởng hoành tráng không chạy được."
+      },
+      {
+        "title": "Bước 2: Test 2 lượt & Cải tiến",
+        "instruction": "Đặt tiêu chí thành công đo được. Chạy thử lượt 1 ghi kết quả. Cải tiến MỘT thứ rồi test lượt 2 so sánh.",
+        "blockTip": "Cải tiến chỉ 1 thứ mỗi lần để biết chính xác nhờ đâu tốt lên."
+      },
+      {
+        "title": "Bước 3: Chuẩn bị Bài Pitch 3 phút",
+        "instruction": "Viết dàn ý 5 phần ra giấy: Vấn đề (30s) -> Giải pháp (40s) -> Demo (60s) -> Dữ liệu (30s) -> Hạn chế (20s). Tập nói to 2 lần.",
+        "blockTip": "Chuẩn bị sẵn cách giả lập (che cảm biến, nhúng ly đất khô) cho phần demo."
+      }
+    ],
+    "solution": {
+      "summary": "Hồ sơ dự án riêng hoàn chỉnh, bảng test 2 lượt và dàn ý bài trình bày 3 phút.",
+      "blocks": [
+        "DÀN Ý BÀI PITCH 3 PHÚT:",
+        "1. VẤN ĐỀ (30s): Cây ở góc ban công nhà em hay bị héo vì trưa nắng gắt đất khô rất nhanh.",
+        "2. GIẢI PHÁP (40s): Khu vườn tự động dùng Mạch Thing, tưới khi đất khô và che mát khi nắng.",
+        "3. DEMO (60s): Giả lập nhúng cảm biến vào ly đất khô -> Bơm chạy tưới 3s -> Màn OLED báo.",
+        "4. DỮ LIỆU (30s): Test 5 lần đúng 4 lần, cải tiến tăng thời gian ngấm nước giúp cây không úng.",
+        "5. HẠN CHẾ (20s): Hạn chế hiện tại chưa có cảm biến mưa, em sẽ phát triển ở phiên bản 2.0."
+      ]
+    },
+    "requiredExtensions": [
+      "arduinoThingBotC3",
+      "dht",
+      "oled",
+      "ultrasonic"
+    ],
+    "allowedBlocks": [
+      "thingBotC3_*",
+      "control_*",
+      "operator_*",
+      "math_*",
+      "dht_*",
+      "oled_*"
+    ],
+    "device": "thingBot_esp32C3",
+    "resources": [
+      {
+        "type": "pdf",
+        "title": "Giáo trình Khu Vườn Thông Minh - Full 7 Bài",
+        "url": "/giaotrinh.pdf",
+        "description": "Trọn bộ giáo trình Dế Base KIT & Hướng dẫn thuyết trình"
+      }
+    ],
+    "video": null,
+    "pdf": "/giaotrinh.pdf",
+    "unlockRequirements": {
+      "lessonsCompleted": [
+        "lesson-006"
+      ]
+    },
+    "requiresEditor": false
+  }
+]

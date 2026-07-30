@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ThingBlock Editor</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body, #app {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #1e1e2e;
+    }
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      font-family: 'Inter', system-ui, sans-serif;
+      gap: 16px;
+      z-index: 9999;
+      transition: opacity 0.4s ease;
+    }
+    #loading.hidden { opacity: 0; pointer-events: none; }
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 4px solid rgba(137, 180, 250, 0.2);
+      border-top-color: #89b4fa;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #loading p { font-size: 14px; opacity: 0.7; }
+    #error-banner {
+      display: none;
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #f38ba8;
+      color: #1e1e2e;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-family: system-ui, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 10000;
+      max-width: 80vw;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>Loading ThingBlock Editor…</p>
+  </div>
+  <div id="error-banner"></div>
+  <div id="app"></div>
+
+  <!-- React 16 (required by OpenBlock GUI) -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+
+  <!-- OpenBlock needs react / react-dom as lowercase globals in browser UMD mode -->
+  <script>
+    window.react = window.React;
+    window['react-dom'] = window.ReactDOM;
+  </script>
+
+  <!-- OpenBlock GUI bundle -->
+  <script src="openblock-gui.js"></script>
+
+  <script>
+    (function () {
+      var loadingEl = document.getElementById('loading');
+      var errorBanner = document.getElementById('error-banner');
+      var appEl = document.getElementById('app');
+
+      function showError(msg) {
+        errorBanner.textContent = msg;
+        errorBanner.style.display = 'block';
+        if (loadingEl) { loadingEl.classList.add('hidden'); }
+      }
+
+      function hideLoading() {
+        if (loadingEl) {
+          loadingEl.classList.add('hidden');
+          setTimeout(function () {
+            if (loadingEl && loadingEl.parentNode) {
+              loadingEl.parentNode.removeChild(loadingEl);
+            }
+          }, 500);
+        }
+      }
+
+      // --- postMessage API for host SvelteKit page ---
+      var vm = null;       // cached VM instance (set in onVmInit)
+      var guiStore = null; // Redux store reference (set after render)
+
+      window.addEventListener('message', function (event) {
+        var data = event.data;
+        if (!data || typeof data !== 'object') return;
+
+        switch (data.type) {
+
+          // ── Standard editor commands ──────────────────────────────────────
+          case 'OPENBLOCK_GET_PROJECT':
+            if (vm) {
+              var json = vm.toJSON();
+              event.source.postMessage({ type: 'OPENBLOCK_PROJECT_DATA', payload: json }, event.origin);
+            }
+            break;
+
+          case 'OPENBLOCK_LOAD_PROJECT':
+            if (vm && data.payload) {
+              vm.loadProject(data.payload).catch(function (err) {
+                console.error('loadProject failed:', err);
+              });
+            }
+            break;
+
+          case 'OPENBLOCK_GET_ARDUINO':
+            if (vm) {
+              try {
+                var code = typeof vm.compile === 'function' ? vm.compile() : null;
+                event.source.postMessage({ type: 'OPENBLOCK_ARDUINO_CODE', payload: code }, event.origin);
+              } catch (e) {
+                event.source.postMessage({ type: 'OPENBLOCK_ARDUINO_CODE', payload: null, error: e.message }, event.origin);
+              }
+            }
+            break;
+
+          // ── Lesson commands ───────────────────────────────────────────────
+
+          /**
+           * LESSON_LOAD_EXTENSIONS { extensionIds: string[] }
+           * Load one or more external extensions into the VM.
+           */
+          case 'LESSON_LOAD_EXTENSIONS':
+            if (vm && Array.isArray(data.extensionIds)) {
+              data.extensionIds.forEach(function (extId) {
+                // extensionManager.loadExtensionURL accepts an extension ID when the
+                // extension is already registered in the external resources server.
+                try {
+                  vm.extensionManager.loadExtensionURL(extId).catch(function (err) {
+                    console.warn('[lesson] extension load failed:', extId, err);
+                  });
+                } catch (e) {
+                  console.warn('[lesson] loadExtensionURL threw:', extId, e);
+                }
+              });
+            }
+            break;
+
+          /**
+           * LESSON_FILTER_TOOLBOX { allowedBlocks: string[] }
+           * Hides toolbox categories whose blocks are not in the allowedBlocks list.
+           * allowedBlocks supports exact IDs and prefix wildcards ("thingBotC3_*").
+           */
+          case 'LESSON_FILTER_TOOLBOX':
+            if (guiStore && Array.isArray(data.allowedBlocks)) {
+              applyToolboxFilter(data.allowedBlocks);
+            }
+            break;
+        }
+      });
+
+      /**
+       * Filter the Scratch/OpenBlock toolbox to show only the allowed block types.
+       * Works by dispatching a Redux action to update the toolbox XML in the store.
+       */
+      function applyToolboxFilter(allowedBlocks) {
+        try {
+          // Get the current toolbox XML from the Redux state
+          var state = guiStore.getState();
+          var toolboxXml = state && state.scratchGui && state.scratchGui.toolbox && state.scratchGui.toolbox.toolboxXML;
+          if (!toolboxXml) return;
+
+          // Parse the XML
+          var parser = new DOMParser();
+          var doc = parser.parseFromString(toolboxXml, 'text/xml');
+
+          // Build a matcher: allow "exact" and "prefix*" patterns
+          function isAllowed(blockType) {
+            return allowedBlocks.some(function (pattern) {
+              if (pattern.endsWith('_*')) {
+                return blockType.startsWith(pattern.slice(0, -1));
+              }
+              return blockType === pattern;
+            });
+          }
+
+          // For each <category>, check if any of its <block type="..."> are allowed
+          var categories = doc.querySelectorAll('category');
+          categories.forEach(function (cat) {
+            var blocks = cat.querySelectorAll('block[type]');
+            var catAllowed = false;
+            blocks.forEach(function (b) {
+              if (isAllowed(b.getAttribute('type'))) catAllowed = true;
+            });
+            if (!catAllowed) cat.setAttribute('hidden', 'true');
+          });
+
+          var filtered = new XMLSerializer().serializeToString(doc);
+
+          // Dispatch to the Redux store
+          guiStore.dispatch({ type: 'scratch-gui/toolbox/UPDATE_TOOLBOX', toolboxXML: filtered });
+        } catch (e) {
+          console.warn('[lesson] toolbox filter failed:', e);
+        }
+      }
+
+      // Notify the host frame that we're ready
+      function notifyReady() {
+        if (window.parent && window.parent !== window) {
+          window.parent.postMessage({ type: 'OPENBLOCK_READY' }, '*');
+        }
+      }
+
+      // --- Render the GUI ---
+      try {
+        var GUI = window.GUI;
+        if (!GUI) {
+          showError('OpenBlock GUI bundle did not load (window.GUI is undefined).');
+          return;
+        }
+
+        // The UMD export's `.default` is the main GUIComponent (containers_gui / ScratchGui)
+        var GUIComponent = GUI.default || GUI.GUI || GUI;
+
+        if (typeof GUIComponent !== 'function') {
+          showError('Could not locate the GUI React component. GUI keys: ' + Object.keys(GUI).slice(0, 20).join(', '));
+          return;
+        }
+
+        // Build props — hook into VM init so we can cache the VM reference
+        var props = {
+          onVmInit: function (vmInstance) {
+            vm = vmInstance;
+            hideLoading();
+            notifyReady();
+          },
+          onUpdateProjectId: function () {},
+          onProjectLoaded: function () {
+            hideLoading();
+          },
+        };
+
+        // Wrap in AppStateHOC if available (provides Redux store)
+        if (GUI.AppStateHOC && typeof GUI.AppStateHOC === 'function') {
+          var WrappedGUI = GUI.AppStateHOC(GUIComponent);
+          // Render and capture the Redux store from the component instance
+          var instance = ReactDOM.render(
+            React.createElement(WrappedGUI, props),
+            appEl
+          );
+          // AppStateHOC exposes the store via instance.store (or context)
+          if (instance && instance.store) guiStore = instance.store;
+        } else {
+          ReactDOM.render(
+            React.createElement(GUIComponent, props),
+            appEl
+          );
+        }
+
+        // Fallback: if onVmInit never fires, hide loading after 8s
+        setTimeout(hideLoading, 8000);
+
+      } catch (err) {
+        console.error('ThingBlock editor boot error:', err);
+        showError('Editor failed to start: ' + err.message);
+      }
+    })();
+  </script>
+</body>
+</html>
