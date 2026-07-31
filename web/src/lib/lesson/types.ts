@@ -61,6 +61,8 @@ export interface Lesson {
   video?: string | null;
   /** Primary PDF URL shown as a button in the lesson panel */
   pdf?: string | null;
+  /** PDF page number to jump to when viewing the full lesson guide */
+  pdfPage?: number | null;
   unlockRequirements: UnlockRequirements;
 }
 

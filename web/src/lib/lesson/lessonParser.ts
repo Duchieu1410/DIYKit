@@ -16,6 +16,11 @@ function optionalString(obj: Record<string, unknown>, key: string): string | und
   return typeof v === 'string' && v ? v : undefined;
 }
 
+function optionalNumber(obj: Record<string, unknown>, key: string): number | undefined {
+  const v = obj[key];
+  return typeof v === 'number' && Number.isFinite(v) ? v : undefined;
+}
+
 function requireArray(obj: Record<string, unknown>, key: string, ctx: string): unknown[] {
   const v = obj[key];
   if (!Array.isArray(v)) throw new Error(`[lesson parser] ${ctx}: "${key}" must be an array`);
@@ -97,6 +102,7 @@ export function parseLesson(raw: unknown): Lesson {
     ),
     video: (r.video && typeof r.video === 'string') ? r.video : null,
     pdf: (r.pdf && typeof r.pdf === 'string') ? r.pdf : null,
+    pdfPage: optionalNumber(r, 'pdfPage'),
     unlockRequirements: parseUnlockRequirements(r.unlockRequirements),
   };
 }
